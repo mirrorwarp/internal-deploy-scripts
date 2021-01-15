@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -e
+
+branch=$1
+path=/var/www/experiments.turbowarp.org/$branch
+
+export ROUTING_STYLE=wildcard
+if [ -z $branch ]; then
+        branch=develop
+        path=/var/www/staging.turbowarp.org
+        export ROOT=/
+else
+        export ROOT=/$branch/
+fi
+if [ "$branch" == "-" ]; then
+        path=/var/www/staging.turbowarp.org
+fi
+
+echo "Staging branch: $branch"
+
+~/pull $branch
+~/build
+
+for file in $(find ~/scratch-gui/build/ -type f \( -iname \*.js -o -iname \*.svg -o -iname \*.html \)); do
+        echo "Compressing $file"
+        brotli -f --best -- $file
+        gzip -k --best $file
+done
+
+mkdir -p $path
+find -L $path -type f -delete
+cp -r ~/scratch-gui/build/* $path
+
+echo "Pushed to $branch ($path)"
+
+~/buildinfo

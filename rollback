@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -r /var/www/turbowarp.org/*
+cp -r ~/old_production/* /var/www/turbowarp.org/
+
+~/buildinfo

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+cd ~/scratch-render/
+rm -rf node_modules
+rm -f package-lock.json
+npm install
+npm link
+
+cd ~/scratch-vm/
+rm -rf node_modules
+npm install
+npm link
+
+cd ~/scratch-gui/
+rm -rf node_modules
+npm install
+npm link scratch-vm scratch-render

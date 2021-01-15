@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+
+pull() {
+        b=$1
+        if [ -z $b ]; then
+                b=develop
+        fi
+        git fetch origin
+        if ! git ls-remote --exit-code . origin/$b &> /dev/null; then
+                b=develop
+        fi
+        echo Pulling branch: $b
+        if ! git checkout $b; then
+                b=develop
+                git checkout $b
+        fi
+        git reset --hard origin/$b
+        git pull origin $b
+}
+
+branch=$1
+
+if [ "$branch" == "-" ]; then
+        echo "Not pulling"
+        exit
+fi
+
+cd ~/scratch-gui/
+pull $branch
+
+cd ~/scratch-vm/
+pull $branch
+
+cd ~/scratch-render/
+pull $branch
+
+echo Synced files.

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+export NODE_ENV=production
+export PLAUSIBLE_API=https://turbowarp.org/api/event
+export PLAUSIBLE_DOMAIN=turbowarp.org
+
+pushd ~/scratch-gui
+npm run build
+date > build/date.txt
+popd
+
+echo Build complete.

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo Old Production: $(cat ~/old_production/date.txt)
+echo Production:\ \ \ \ \ $(cat /var/www/turbowarp.org/date.txt)
+echo Staging:\ \ \ \ \ \ \ \ $(cat /var/www/staging.turbowarp.org/date.txt)
