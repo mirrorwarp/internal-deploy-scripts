@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -r /var/www/turbowarp.org/*
-cp -r ~/old_production/* /var/www/turbowarp.org/
+rm -r /var/www/mirrorwarp.github.io/*
+cp -r ~/old_production/* /var/www/mirrorwarp.github.io/
 
 ~/buildinfo
