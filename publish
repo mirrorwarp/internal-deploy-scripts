@@ -4,7 +4,7 @@ set -e
 
 rm -r ~/old_production
 mkdir ~/old_production
-mv /var/www/turbowarp.org/* ~/old_production
+mv /var/www/mirrorwarp.github.io/* ~/old_production
 cp -r /var/www/staging.turbowarp.org/* /var/www/turbowarp.org
 
 echo Pushed to production.
