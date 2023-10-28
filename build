@@ -3,8 +3,8 @@
 set -e
 
 export NODE_ENV=production
-export PLAUSIBLE_API=https://turbowarp.org/api/event
-export PLAUSIBLE_DOMAIN=turbowarp.org
+export PLAUSIBLE_API=https://mirrorwarp.github.io/api/event
+export PLAUSIBLE_DOMAIN=mirrorwarp.github.io
 
 pushd ~/scratch-gui
 npm run build
